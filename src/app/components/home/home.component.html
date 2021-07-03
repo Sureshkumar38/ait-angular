@@ -1,0 +1,58 @@
+<div>
+  <div>
+    <form class="form-contains" [formGroup]="profileForm" (ngSubmit)="submitbtn()">
+      <section>
+        <div hidden>
+          <p>Id</p>
+          <input type="text" placeholder="Id" formControlName="Id" [(ngModel)]="inputId">
+        </div>
+        <div>
+          <p>FirstName*</p>
+          <input type="text" placeholder="FirstName" formControlName="FirstName" [(ngModel)]="inputFirstName" required>
+        </div>
+        <div>
+          <p>Last Name*</p>
+          <input type="text" placeholder="LastName" formControlName="LastName" [(ngModel)]="inputLastName" required>
+        </div>
+        <div>
+          <p>Email*</p>
+          <input type="text" placeholder="Email" formControlName="Email" [(ngModel)]="inputEmail" required>
+        </div>
+        <div>
+          <p>ImageUrl*</p>
+          <input type="text" placeholder="ImageUrl" formControlName="ImageUrl" [(ngModel)]="inputImageUrl" required>
+        </div>
+        <div>
+          <button type="submit">submit</button>
+          <button type="reset">reset</button>
+        </div>
+      </section>
+    </form>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Image</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of ItemsArray">
+        <th>{{ item.id }}</th>
+        <td>{{ item.first_name }}</td>
+        <td>{{ item.last_name }}</td>
+        <td>{{ item.email }}</td>
+        <td><img src="{{ item.avatar}}"></td>
+        <td>
+          <button (click)=edit(item,item.id)>Edit</button>
+          <button (click)=delete(item,item.id)>Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
